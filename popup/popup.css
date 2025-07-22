@@ -1,0 +1,118 @@
+
+.peek-a-boo-button {
+    background-color: blueviolet; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px; /* Button padding */
+    align-items: center;
+}
+
+.reset-button {
+    padding: 2px; /* Reset button padding */
+    align-items: center;
+    margin-left: 5px;
+}
+
+.flex-container {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 580px;
+}
+
+.flex-item{
+    display:flex;  
+} 
+.pt-4{
+    padding-top: 4px;
+}
+.reset-icon{
+    width:20px;
+    height: auto;
+} 
+
+.monstera-leaves{
+    width: auto;
+    height: 550px;
+
+    &.left{
+        position:relative;
+        rotate: 180deg;
+        left: 80;
+    }
+
+    &.right{
+        position:relative;
+        left: -80px;
+    }
+
+    &.bottom{
+        position:absolute;
+        left:144px;
+        top: 93px;
+        rotate: 90deg;
+    }
+    &.top{
+        position:absolute;
+        left:89px;
+        top: -75px;
+        rotate: -90deg;
+    }
+}
+
+.leaf-gallery{
+    display: flex;
+    width: 200px;
+    height:auto;
+    position:absolute
+}
+
+.leaf{
+    position: absolute;
+    width: 200px;
+    height:auto;
+
+    &.tilt {
+        animation-name: tilt-shaking;
+        animation-duration: 10.5s;
+        animation-iteration-count: infinite;
+    }
+
+    &.jump {
+        animation-name: jump-shake;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+    }
+}
+
+.animal {
+    width: 200px;
+    height:auto; 
+}
+.animal-container{
+    position: absolute;
+    left: 200px;
+    top: 200px;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes jump-shake {
+        0% { transform: translateX(0) rotate(0)}
+        35% { transform: translateY(0) rotate(0)}
+        85% { transform: translateY(0) rotate(0) }
+        89% { transform: translateY(-2px) rotate(-17deg) }
+        93% { transform: translateY(-3px) rotate(17deg) }
+        98% { transform: translateY(-4px) rotate(-17deg) }
+        100% { transform: translateY(0) rotate(0) }
+}
+
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }

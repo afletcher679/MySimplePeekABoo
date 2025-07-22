@@ -1,0 +1,31 @@
+<!-- This is where you create the structure of the view of the extension -->
+<html>
+    <head>
+        <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+        <div class="flex-container">
+
+            <div class="flex-item">
+                <img class="monstera-leaves left" id="monstera-left" src="../images/monstera_leaves_cluster.png" alt="Monstera Leaves" >
+                <img class="monstera-leaves right" id="monstera-right" src="../images/monstera_leaves_cluster.png" alt="Monstera Leaves">
+                <img class="monstera-leaves bottom" id="monstera-bottom" src="../images/monstera_leaves_cluster.png" alt="Monstera Leaves">
+                <img class="monstera-leaves top" id="monstera-top" src="../images/monstera_leaves_cluster.png" alt="Monstera Leaves">
+                <div id="animal-image" class="animal-container"></div>
+                <div id="image-gallery" class="leaf-gallery"></div>
+            </div>
+
+            <div class="flex-item pt-4">
+                <button class="peek-a-boo-button" type="button" id="clickMe">Peek-A-Boo!</button>
+                <button class="reset-button" type="button" id="reset" aria-disabled="true">
+                    <img src="../images/reset.png" alt="Reset Icon" class="reset-icon">
+                </button>
+            </div>
+
+        </div>
+
+        <script src="popup.js"></script>
+
+    </body>
+</html>
+<!-- <img src="monsters_leaves_cluster.png" alt="Moving Image" class="moving-image"> -->
