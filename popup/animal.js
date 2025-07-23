@@ -1,4 +1,12 @@
-const animalImageUrls = ['../images/tiger.png', '../images/elephant.png', '../images/giraffe.png', '../images/lion.png', '../images/panda.png', '../images/monkey.png', '../images/zebra.png'];
+import {getRandomInt} from './commonUtils.js';
+
+const animalImageUrls = ['../images/tiger.png',
+    '../images/elephant.png',
+    '../images/giraffe.png',
+    '../images/lion.png',
+    '../images/panda.png',
+    '../images/monkey.png',
+    '../images/zebra.png'];
 
 export function setRandomAnimalImage(animalDiv) {
     animalDiv.appendChild(document.createElement('img'));
