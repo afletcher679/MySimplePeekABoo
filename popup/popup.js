@@ -1,8 +1,8 @@
 import {setRandomAnimalImage} from "./animal.js";
 import {createRowsOfLeaves} from "./leaf.js";
 
-const peekButton = document.getElementById('clickMe');
-const resetButton = document.getElementById('reset');
+const peekButton = document.getElementById('peekButton');
+const resetButton = document.getElementById('resetButton');
 
 const animalDiv = document.getElementById('animal-image');
 setRandomAnimalImage(animalDiv); //Set initial random animal image
