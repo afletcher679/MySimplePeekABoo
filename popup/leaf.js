@@ -26,7 +26,7 @@ function shuffleImages() {
     return imageArray;
 }
 
-function createRowsOfLeaves(imageGalleryElement) {
+export function createRowsOfLeaves(imageGalleryElement) {
     let leafRowStartTopPixel = -12;
     
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
