@@ -57,3 +57,42 @@ export function createRowsOfLeaves(imageGalleryElement) {
         imageGalleryElement.appendChild(row);             // Append the row to the gallery
     }
 }
+
+export function animateLeaves(action) {
+    // Target only row 2 and 3
+    const leafRows = [document.getElementById('row-2'), document.getElementById('row-3')];
+
+    // Define transforms for 'peek' and 'reset' actions
+    const animations = {
+        peek: [
+            {index: 1, transform: 'translateX(-100px)'}, //shift left
+            {row: 2, index: 2, transform: 'translateY(-120px)'}, //shift up for row 2
+            {row: 3, index: 2, transform: 'translateY(120px)'}, //shift down for row 3
+            {index: 3, transform: 'translateX(100px)'} //shift right
+        ],
+        reset: [
+            {index: 1, transform: 'translateX(45px)'}, // shift right
+            {row: 2, index: 2, transform: 'translateY(60px)'}, // shift down for row 2
+            {row: 3, index: 2, transform: 'translateY(-60px)'}, // shift up for row 3
+            {index: 3, transform: 'translateX(-45px)'} //right
+        ]
+    };
+
+    // Apply animation to matching leaf images
+    leafRows.forEach(row => {
+        // For each image in the current row
+        row.querySelectorAll('img').forEach((img, index) => {
+            // Find the animation config for this image and row
+            const animation = animations[action].find(a =>
+                a.index === index && (a.row === undefined || a.row === parseInt(row.id.split('-')[1]))
+            );
+            // If an animation is defined for this image, apply it
+            if (animation) {
+                img.animate(
+                    [{transform: animation.transform}],
+                    {duration: 500, fill: 'forwards'}
+                );
+            }
+        });
+    });
+}
