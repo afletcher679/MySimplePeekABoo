@@ -1,11 +1,11 @@
 import {getRandomInt} from "./commonUtils.js";
 
-const leafImageUrls = ['../images/leaf-1.png',
-    '../images/leaf-2.png',
-    '../images/leaf-3.png',
-    '../images/leaf-4.png',
-    '../images/tropical-1.png',
-    '../images/tropical-2.png'];
+const leafImageUrls = ['../images/leaves/leaf-1.png',
+    '../images/leaves/leaf-2.png',
+    '../images/leaves/leaf-3.png',
+    '../images/leaves/leaf-4.png',
+    '../images/leaves/tropical-1.png',
+    '../images/leaves/tropical-2.png'];
 
 const leafClasses = ['leaf', 'leaf tilt', 'leaf jump'];
 const totalLeafRows = 4;

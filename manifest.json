@@ -7,9 +7,9 @@
         "default_popup": "popup/popup.html"
     },
     "icons": {
-        "16": "images/monstera-leaf-16.png",
-        "32": "images/monstera-leaf-32.png",
-        "48": "images/monstera-leaf-48.png",
-        "128": "images/monstera-leaf-128.png"
+        "16": "images/icon/monstera-leaf-16.png",
+        "32": "images/icon/monstera-leaf-32.png",
+        "48": "images/icon/monstera-leaf-48.png",
+        "128": "images/icon/monstera-leaf-128.png"
     }
 }
