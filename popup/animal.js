@@ -12,5 +12,13 @@ export function setRandomAnimalImage(animalDiv) {
     animalDiv.appendChild(document.createElement('img'));
     animalDiv.img = animalDiv.querySelector('img');
     animalDiv.img.src = animalImageUrls[getRandomInt(animalImageUrls.length)];
+    hideAnimalImage(animalDiv);
+}
+
+export function showAnimalImage(animalDiv) {
+    animalDiv.img.className = 'animal';
+}
+
+export function hideAnimalImage(animalDiv) {
     animalDiv.img.className = 'hide';
 }
