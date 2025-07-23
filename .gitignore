@@ -1,2 +1,5 @@
 # Ignore file made by macOS
 .DS_Store
+
+# Ignore .idea directory
+.idea/
