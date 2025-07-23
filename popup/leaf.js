@@ -1,4 +1,4 @@
-import './commonUtils'
+import {getRandomInt} from "./commonUtils.js";
 
 const leafImageUrls = ['../images/leaf-1.png',
     '../images/leaf-2.png',
@@ -28,7 +28,7 @@ function shuffleImages() {
 
 export function createRowsOfLeaves(imageGalleryElement) {
     let leafRowStartTopPixel = -12;
-    
+
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
         const row = document.createElement('div'); // Create a new <div> for each row  
 
