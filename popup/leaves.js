@@ -11,9 +11,9 @@ const leafClasses = ['leaf', 'leaf tilt', 'leaf jump'];
 const totalLeafRows = 4;
 
 function getRandomSubsetFromArray(array) {
-    const count = 5; // Number of  to return
-    const arrayCopy = [...array]; // clone the array to avoid mutation
-    return arrayCopy.slice(0, count); // return first `count` items
+    const count = 5; // Number of images to return
+    const arrayCopy = [...array]; 
+    return arrayCopy.slice(0, count); 
 }
 
 function shuffleImages() {
@@ -27,32 +27,30 @@ function shuffleImages() {
 }
 
 export function createRowsOfLeaves(imageGalleryElement) {
-    let leafRowStartTopPixel = -12;
+    let leafRowTopPixel = -12;
 
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
-        const row = document.createElement('div'); // Create a new <div> for each row  
-
+        const row = document.createElement('div'); // Create a new <div> for each row
         row.id = `row-${rowNumber + 1}`; // Set an ID for the row
 
         const shuffledLeafImageUrls = shuffleImages(); // Shuffle the images for randomness
 
-        let leftPixel = 50;
+        let leafRowLeftPixel = 50;
 
-        for (let currentLeafNumber = 0; currentLeafNumber < shuffledLeafImageUrls.length; currentLeafNumber++) {
+        for (let currentLeaf = 0; currentLeaf < shuffledLeafImageUrls.length; currentLeaf++) {
 
             const img = document.createElement('img'); // Create a new <img> element
-
-            img.src = shuffledLeafImageUrls[currentLeafNumber];                   // Set the source of the image
-            img.alt = `Image ${currentLeafNumber + 1}`;               // Set alternative text for accessibility
+            img.src = shuffledLeafImageUrls[currentLeaf];                   // Set the source of the image
+            img.alt = `Leaf ${currentLeaf + 1}`;               // Set alternative text for accessibility
             img.className = leafClasses[getRandomInt(leafClasses.length)]; // Assign a random class to the image for styling
-            img.style.top = `${leafRowStartTopPixel}px`;          // Set the top position of the image
-            img.style.left = `${leftPixel}px`;        // Set the left position of the image
+            img.style.top = `${leafRowTopPixel}px`;          // Set the top position of the image
+            img.style.left = `${leafRowLeftPixel}px`;        // Set the left position of the image
 
-            leftPixel += 120;                           // Increment the left position for the next image
+            leafRowLeftPixel += 120;                           // Increment the left position for the next image
 
             row.appendChild(img);            // Append the image to the container
         }
-        leafRowStartTopPixel += 110;
+        leafRowTopPixel += 110;
 
         imageGalleryElement.appendChild(row);             // Append the row to the gallery
     }
