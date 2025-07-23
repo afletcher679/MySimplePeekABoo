@@ -1,149 +1,28 @@
-import {setRandomAnimalImage} from "./animal.js";
-import {createRowsOfLeaves} from "./leaf.js";
+import {hideAnimalImage, setRandomAnimalImage, showAnimalImage} from "./animal.js";
+import {createRowsOfLeaves, animateLeaves} from "./leaf.js";
 
 const peekButton = document.getElementById('peekButton');
 const resetButton = document.getElementById('resetButton');
-
+const imageGallery = document.getElementById('image-gallery');
 const animalDiv = document.getElementById('animal-image');
+
+createRowsOfLeaves(imageGallery); // Create rows of leaves and append to the gallery
 setRandomAnimalImage(animalDiv); //Set initial random animal image
 
+function toggleButtons(isPeek) {
+    peekButton.ariaDisabled = isPeek.toString();
+    resetButton.ariaDisabled = (!isPeek).toString();
+}
+
 peekButton.addEventListener('click', () => {
-    peekButton.ariaDisabled = "true";
-    resetButton.ariaDisabled = "false";
-    animalDiv.img.className = 'animal';
-
-    const leafRow2 = document.getElementById('row-2');
-    const leafRow3 = document.getElementById('row-3');
-    const row2Images = leafRow2.querySelectorAll('img');
-    const row3Images = leafRow3.querySelectorAll('img');
-
-    row2Images.forEach((img, index) => {
-        if (index === 1) {
-            img.animate(
-                [
-                    {transform: 'translateX(-100px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-
-        }
-
-        if (index === 2) {
-            img.animate(
-                [
-                    {transform: 'translateY(-120px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-        if (index === 3) {
-            img.animate(
-                [
-                    {transform: 'translateX(100px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-    });
-
-    row3Images.forEach((img, index) => {
-        if (index === 1) {
-            img.animate(
-                [
-                    {transform: 'translateX(-100px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-
-        }
-
-        if (index === 2) {
-            img.animate(
-                [
-                    {transform: 'translateY(120px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-        if (index === 3) {
-            img.animate(
-                [
-                    {transform: 'translateX(100px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-    });
+    toggleButtons(true);
+    showAnimalImage(animalDiv);
+    animateLeaves('peek');
 });
 
 resetButton.addEventListener('click', () => {
-    resetButton.ariaDisabled = "true";
-    animalDiv.img.className = 'hide';
+    toggleButtons(false);
+    hideAnimalImage(animalDiv);
     setRandomAnimalImage(animalDiv);
-
-    const leafRow2 = document.getElementById('row-2');
-    const leafRow3 = document.getElementById('row-3');
-    const row2Images = leafRow2.querySelectorAll('img');
-    const row3Images = leafRow3.querySelectorAll('img');
-
-    row2Images.forEach((img, index) => {
-        if (index === 1) {
-            img.animate(
-                [
-                    {transform: 'translateX(45px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-
-        }
-
-        if (index === 2) {
-            img.animate(
-                [
-                    {transform: 'translateY(60px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-        if (index === 3) {
-            img.animate(
-                [
-                    {transform: 'translateX(-45px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-    });
-
-    row3Images.forEach((img, index) => {
-        if (index === 1) {
-            img.animate(
-                [
-                    {transform: 'translateX(45px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-
-        }
-
-        if (index === 2) {
-            img.animate(
-                [
-                    {transform: 'translateY(-60px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-        if (index === 3) {
-            img.animate(
-                [
-                    {transform: 'translateX(-45px)'}
-                ],
-                {duration: 500, fill: 'forwards'}
-            )
-        }
-    });
+    animateLeaves('reset');
 });
-
-const imageGallery = document.getElementById('image-gallery');
-createRowsOfLeaves(imageGallery); // Create rows of leaves and append to the gallery
