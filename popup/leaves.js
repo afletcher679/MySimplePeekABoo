@@ -26,7 +26,8 @@ function shuffleImages() {
     return imageArray;
 }
 
-export function createRowsOfLeaves(imageGalleryElement) {
+export function createRowsOfLeaves() {
+    const imageGallery = document.getElementById('image-gallery');
     let leafRowTopPixel = -12;
     let previousLeafClass = null;
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
@@ -61,7 +62,7 @@ export function createRowsOfLeaves(imageGalleryElement) {
         }
         leafRowTopPixel += 110;
 
-        imageGalleryElement.appendChild(row);             // Append the row to the gallery
+        imageGallery.appendChild(row);             // Append the row to the gallery
     }
 }
 

@@ -3,11 +3,10 @@ import {createRowsOfLeaves, animateLeaves} from "./leaves.js";
 
 const peekButton = document.getElementById('peekButton');
 const resetButton = document.getElementById('resetButton');
-const imageGallery = document.getElementById('image-gallery');
-const animalDiv = document.getElementById('animal-image');
 
-createRowsOfLeaves(imageGallery); // Create rows of leaves and append to the gallery
-setRandomAnimalImage(animalDiv); //Set initial random animal image
+
+createRowsOfLeaves(); // Create rows of leaves and append to the gallery
+setRandomAnimalImage(); //Set initial random animal image
 
 function toggleButtons(isPeek) {
     peekButton.ariaDisabled = isPeek.toString();
@@ -16,13 +15,13 @@ function toggleButtons(isPeek) {
 
 peekButton.addEventListener('click', () => {
     toggleButtons(true);
-    showAnimalImage(animalDiv);
+    showAnimalImage();
     animateLeaves('peek');
 });
 
 resetButton.addEventListener('click', () => {
     toggleButtons(false);
-    hideAnimalImage(animalDiv);
-    setRandomAnimalImage(animalDiv);
+    hideAnimalImage();
+    setRandomAnimalImage();
     animateLeaves('reset');
 });

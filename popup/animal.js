@@ -7,9 +7,9 @@ const animalImageUrls = ['../images/animals/tiger.png',
     '../images/animals/panda.png',
     '../images/animals/monkey.png',
     '../images/animals/zebra.png'];
-
+const animalDiv = document.getElementById('animal-image');
 let previousAnimal = null;
-export function setRandomAnimalImage(animalDiv) {
+export function setRandomAnimalImage() {
     animalDiv.appendChild(document.createElement('img'));
     animalDiv.img = animalDiv.querySelector('img');
     let imageUrlsCopy = [...animalImageUrls];
@@ -20,10 +20,10 @@ export function setRandomAnimalImage(animalDiv) {
     hideAnimalImage(animalDiv);
 }
 
-export function showAnimalImage(animalDiv) {
+export function showAnimalImage() {
     animalDiv.img.className = 'animal';
 }
 
-export function hideAnimalImage(animalDiv) {
+export function hideAnimalImage() {
     animalDiv.img.className = 'hide';
 }
