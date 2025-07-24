@@ -1,4 +1,4 @@
-import {getRandomInt} from './commonUtils.js';
+import {getRandomInt, tryFilterOutArrayItem} from './commonUtils.js';
 
 const animalImageUrls = ['../images/animals/tiger.png',
     '../images/animals/elephant.png',
@@ -9,13 +9,11 @@ const animalImageUrls = ['../images/animals/tiger.png',
     '../images/animals/zebra.png'];
 const animalDiv = document.getElementById('animal-image');
 let previousAnimal = null;
+
 export function setRandomAnimalImage() {
     animalDiv.appendChild(document.createElement('img'));
     animalDiv.img = animalDiv.querySelector('img');
-    let imageUrlsCopy = [...animalImageUrls];
-    if (previousAnimal) {
-        imageUrlsCopy = imageUrlsCopy.filter(url => url !== previousAnimal);
-    }
+    let imageUrlsCopy = tryFilterOutArrayItem(animalImageUrls, previousAnimal);
     animalDiv.img.src = imageUrlsCopy[getRandomInt(imageUrlsCopy.length)];
     hideAnimalImage(animalDiv);
 }

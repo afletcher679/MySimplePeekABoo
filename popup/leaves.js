@@ -1,4 +1,4 @@
-import {getRandomInt} from "./commonUtils.js";
+import {tryFilterOutArrayItem, getRandomInt} from "./commonUtils.js";
 
 const leafImageUrls = ['../images/leaves/leaf-1.png',
     '../images/leaves/leaf-2.png',
@@ -12,8 +12,8 @@ const totalLeafRows = 4;
 
 function getRandomSubsetFromArray(array) {
     const count = 5; // Number of images to return
-    const arrayCopy = [...array]; 
-    return arrayCopy.slice(0, count); 
+    const arrayCopy = [...array];
+    return arrayCopy.slice(0, count);
 }
 
 function shuffleImages() {
@@ -31,9 +31,9 @@ export function createRowsOfLeaves() {
     let leafRowTopPixel = -12;
     let previousLeafClass = null;
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
-       
+
         const row = document.createElement('div'); // Create a new <div> for each row
-       
+
         row.id = `row-${rowNumber + 1}`; // Set an ID for the row
 
         const shuffledLeafImageUrls = shuffleImages(); // Shuffle the images for randomness
@@ -45,14 +45,11 @@ export function createRowsOfLeaves() {
             const img = document.createElement('img'); // Create a new <img> element
             img.src = shuffledLeafImageUrls[currentLeaf];                   // Set the source of the image
             img.alt = `Leaf ${currentLeaf + 1}`;               // Set alternative text for accessibility
-            
-            let leafClassesCopy = [...leafClasses]; // Create a copy of the leaf classes array
-            if(previousLeafClass) {
-                leafClassesCopy = leafClassesCopy.filter(leafClass => leafClass !== previousLeafClass)// Remove the previous class if it exists to avoid repetition
-            }
+
+            let leafClassesCopy = tryFilterOutArrayItem(leafClasses, previousLeafClass)
             
             previousLeafClass = img.className = leafClassesCopy[getRandomInt(leafClassesCopy.length)]; // Assign a random class to the image for styling
-            
+
             img.style.top = `${leafRowTopPixel}px`;          // Set the top position of the image
             img.style.left = `${leafRowLeftPixel}px`;        // Set the left position of the image
 
