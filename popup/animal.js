@@ -8,10 +8,15 @@ const animalImageUrls = ['../images/animals/tiger.png',
     '../images/animals/monkey.png',
     '../images/animals/zebra.png'];
 
+let previousAnimal = null;
 export function setRandomAnimalImage(animalDiv) {
     animalDiv.appendChild(document.createElement('img'));
     animalDiv.img = animalDiv.querySelector('img');
-    animalDiv.img.src = animalImageUrls[getRandomInt(animalImageUrls.length)];
+    let imageUrlsCopy = [...animalImageUrls];
+    if (previousAnimal) {
+        imageUrlsCopy = imageUrlsCopy.filter(url => url !== previousAnimal);
+    }
+    animalDiv.img.src = imageUrlsCopy[getRandomInt(imageUrlsCopy.length)];
     hideAnimalImage(animalDiv);
 }
 
