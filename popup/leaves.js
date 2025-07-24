@@ -28,9 +28,11 @@ function shuffleImages() {
 
 export function createRowsOfLeaves(imageGalleryElement) {
     let leafRowTopPixel = -12;
-
+    let previousLeafClass = null;
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
+       
         const row = document.createElement('div'); // Create a new <div> for each row
+       
         row.id = `row-${rowNumber + 1}`; // Set an ID for the row
 
         const shuffledLeafImageUrls = shuffleImages(); // Shuffle the images for randomness
@@ -42,7 +44,14 @@ export function createRowsOfLeaves(imageGalleryElement) {
             const img = document.createElement('img'); // Create a new <img> element
             img.src = shuffledLeafImageUrls[currentLeaf];                   // Set the source of the image
             img.alt = `Leaf ${currentLeaf + 1}`;               // Set alternative text for accessibility
-            img.className = leafClasses[getRandomInt(leafClasses.length)]; // Assign a random class to the image for styling
+            
+            let leafClassesCopy = [...leafClasses]; // Create a copy of the leaf classes array
+            if(previousLeafClass) {
+                leafClassesCopy = leafClassesCopy.filter(leafClass => leafClass !== previousLeafClass)// Remove the previous class if it exists to avoid repetition
+            }
+            
+            previousLeafClass = img.className = leafClassesCopy[getRandomInt(leafClassesCopy.length)]; // Assign a random class to the image for styling
+            
             img.style.top = `${leafRowTopPixel}px`;          // Set the top position of the image
             img.style.left = `${leafRowLeftPixel}px`;        // Set the left position of the image
 
