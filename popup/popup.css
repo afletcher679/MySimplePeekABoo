@@ -1,3 +1,7 @@
+body {
+    width: 600px;
+    height: 600px;
+}
 
 .peek-a-boo-button {
     background-color: blueviolet; /* Button background color */
@@ -12,59 +16,53 @@
     margin-left: 5px;
 }
 
-.flex-container {
-    display: flex; 
-    flex-direction: column;
+.left-right-leaf-clusters-container {
+    height: 90%;
+}
+
+.top-bottom-leaf-clusters-container {
     align-items: center;
-    width: 600px;
-    height: 580px;
+    flex-direction: column;
+    margin-top: -90%;
+    height: 90%;
+    
 }
 
 .flex-item{
     display:flex;  
-} 
-.pt-4{
-    padding-top: 4px;
+    
+    &.centered-items{
+        justify-content:  center;
+        align-items: center;
+    }
 }
+
 .reset-icon{
     width:20px;
     height: auto;
 } 
 
-.monstera-leaves{
-    width: auto;
-    height: 550px;
+.left-right-leaf-clusters {
+    width: 50%;
 
-    &.left{
-        position:relative;
+    &.left {
         rotate: 180deg;
-        left: 80;
-    }
-
-    &.right{
-        position:relative;
-        left: -80px;
-    }
-
-    &.bottom{
-        position:absolute;
-        left:144px;
-        top: 93px;
-        rotate: 90deg;
-    }
-    &.top{
-        position:absolute;
-        left:89px;
-        top: -75px;
-        rotate: -90deg;
     }
 }
 
-.leaf-gallery{
-    display: flex;
-    width: 200px;
-    height:auto;
-    position:absolute
+.top-bottom-leaf-clusters {
+    position: absolute;
+    width: 67.5%;
+
+    &.bottom{
+        bottom: -39px;
+        rotate: 90deg;
+    }
+
+    &.top {
+        top: -81px;
+        rotate: -90deg;
+    }
 }
 
 .leaf{
@@ -89,6 +87,7 @@
     width: 200px;
     height:auto; 
 }
+
 .animal-container{
     position: absolute;
     left: 200px;
@@ -97,6 +96,12 @@
 
 .hide {
     display: none;
+}
+
+.bottom-button-container{
+    position: relative;
+    padding-top: 4px;
+    z-index: 1;
 }
 
 @keyframes jump-shake {

@@ -28,7 +28,7 @@ function shuffleImages() {
 
 export function createRowsOfLeaves() {
     const imageGallery = document.getElementById('image-gallery');
-    let leafRowTopPixel = -12;
+    let leafRowTopPixel = -15;
     let previousLeafClass = null;
     for (let rowNumber = 0; rowNumber < totalLeafRows; rowNumber++) {
 
@@ -38,7 +38,7 @@ export function createRowsOfLeaves() {
 
         const shuffledLeafImageUrls = shuffleImages(); // Shuffle the images for randomness
 
-        let leafRowLeftPixel = 50;
+        let leafRowLeftPixel = -10;
 
         for (let currentLeaf = 0; currentLeaf < shuffledLeafImageUrls.length; currentLeaf++) {
 
@@ -57,7 +57,7 @@ export function createRowsOfLeaves() {
 
             row.appendChild(img);            // Append the image to the container
         }
-        leafRowTopPixel += 110;
+        leafRowTopPixel += 120;
 
         imageGallery.appendChild(row);             // Append the row to the gallery
     }

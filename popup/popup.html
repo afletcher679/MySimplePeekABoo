@@ -6,25 +6,26 @@
         <title class="hide">Peek-A-Boo!</title>
     </head>
     <body>
-        <div class="flex-container">
-
-            <div class="flex-item">
-                <img class="monstera-leaves left" id="monstera-left" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves" >
-                <img class="monstera-leaves right" id="monstera-right" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
-                <img class="monstera-leaves bottom" id="monstera-bottom" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
-                <img class="monstera-leaves top" id="monstera-top" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
-                <div id="animal-image" class="animal-container"></div>
-                <div id="image-gallery" class="leaf-gallery"></div>
+            <div class="flex-item left-right-leaf-clusters-container">
+                <img class="left-right-leaf-clusters left" id="monstera-left" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves" >
+                <img class="left-right-leaf-clusters" id="monstera-right" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
             </div>
+            
+            <div class="flex-item top-bottom-leaf-clusters-container ">
+                <img class="top-bottom-leaf-clusters  top" id="monstera-top" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
+                <img class="top-bottom-leaf-clusters  bottom" id="monstera-bottom" src="../images/leaves/monstera_leaves_cluster.png" alt="Monstera Leaves">
+            </div>
+            
+            <div id="animal-image" class="animal-container"></div>
+            
+            <div id="image-gallery" ></div>
 
-            <div class="flex-item pt-4">
+            <div class="flex-item centered-items bottom-button-container">
                 <button class="peek-a-boo-button" type="button" id="peekButton">Peek-A-Boo!</button>
                 <button class="reset-button" type="button" id="resetButton" aria-disabled="true">
                     <img src="../images/reset.png" alt="Reset Icon" class="reset-icon">
                 </button>
             </div>
-
-        </div>
 
         <script type="module" src="popup.js"></script>
 
