@@ -1,0 +1,9 @@
+{
+    "name": "Peek-a-Boo!",
+    "description": "My peek-a-boo extension built with React and Vite.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "index.html"
+    }
+}
