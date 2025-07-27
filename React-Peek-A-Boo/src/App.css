@@ -2,12 +2,12 @@
 .flex-container {
     display: flex;
     justify-content:  center;
+    align-items: center;
 }
 
 .peek-a-boo-button {
     background-color: blueviolet; /* Button background color */
     color: white; /* Button text color */
-    padding: 10px 20px; /* Button padding */
 }
 
 .reset-button {
@@ -19,4 +19,24 @@
 .reset-icon{
     width:20px;
     height: auto;
-} 
+}
+
+.left-right-leaf-clusters-container {
+    height: 90%;
+}
+
+.top-bottom-leaf-clusters-container {
+    align-items: center;
+    flex-direction: column;
+    margin-top: -90%;
+    height: 90%;
+}
+
+.left-right-leaf-clusters {
+    width: 50%;
+    height: 100%;
+
+    &.left {
+        rotate: 180deg;
+    }
+}

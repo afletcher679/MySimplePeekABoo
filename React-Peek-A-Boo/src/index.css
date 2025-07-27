@@ -1,5 +1,10 @@
 /* This is for global styles, for the entire application */
 body {
   min-width: 600px;
-  min-height:100vh;
+  height: 600px;
+  margin: 8px !important;
+}
+
+#root{
+  height: 100%;
 }
