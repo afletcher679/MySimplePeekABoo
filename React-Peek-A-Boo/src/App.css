@@ -3,8 +3,20 @@
     display: flex;
     justify-content:  center;
 }
+
 .peek-a-boo-button {
     background-color: blueviolet; /* Button background color */
     color: white; /* Button text color */
     padding: 10px 20px; /* Button padding */
 }
+
+.reset-button {
+    padding: 2px; /* Reset button padding */
+    align-items: center;
+    margin-left: 5px;
+}
+
+.reset-icon{
+    width:20px;
+    height: auto;
+} 
