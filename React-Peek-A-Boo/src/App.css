@@ -40,3 +40,18 @@
         rotate: 180deg;
     }
 }
+
+.top-bottom-leaf-clusters {
+    position: absolute;
+    width: 67.5%;
+
+    &.bottom{
+        bottom: -39px;
+        rotate: 90deg;
+    }
+
+    &.top {
+        top: -81px;
+        rotate: -90deg;
+    }
+}

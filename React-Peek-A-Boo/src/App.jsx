@@ -12,6 +12,10 @@ function App() {
             <img src={leafCluster} alt="Leaf Clusters" className={"left-right-leaf-clusters left"}/>
             <img src={leafCluster} alt="Leaf Clusters" className={"left-right-leaf-clusters"}/>
         </div>
+        <div className={"d-flex top-bottom-leaf-clusters-container"}>
+            <img src={leafCluster} alt="Leaf Clusters" className={"top-bottom-leaf-clusters top"}/>
+            <img src={leafCluster} alt="Leaf Clusters" className={"top-bottom-leaf-clusters bottom"}/>
+        </div>
         <div className={"pt-1 flex-container"}>
             <button className={"peek-a-boo-button p-1"}>Peek-A-Boo!</button>
         <button className={"reset-button"}>
