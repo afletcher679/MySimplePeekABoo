@@ -1,2 +1,10 @@
 /* A component-scoped stylesheet for App.jsx. Styles specific to the App component. */
-
+.flex-container {
+    display: flex;
+    justify-content:  center;
+}
+.peek-a-boo-button {
+    background-color: blueviolet; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px; /* Button padding */
+}
