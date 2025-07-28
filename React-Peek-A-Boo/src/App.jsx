@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import resetIcon from './assets/reset.png';
 import leafCluster from './assets/leaves/monstera_leaves_cluster.png';
 import {Animal, getRandomAnimal} from "./Animal.jsx";
+import {RowsOfLeaves} from "./LeafRows.jsx";
 
 function App() {
 
@@ -32,7 +33,9 @@ function App() {
             </div>
 
             {showAnimal && <Animal animalImage={currentAnimal}/>}
-
+            
+            <RowsOfLeaves/>
+            
             <div className={"pt-1 flex-container"}>
                 <button className={"peek-a-boo-button p-1"} onClick={handlePeekABoo}>Peek-A-Boo!</button>
                 <button className={"reset-button"}>
