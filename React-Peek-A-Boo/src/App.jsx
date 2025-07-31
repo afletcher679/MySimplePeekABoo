@@ -5,19 +5,27 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import resetIcon from './assets/reset.png';
 import leafCluster from './assets/leaves/monstera_leaves_cluster.png';
 import {Animal, getRandomAnimal} from "./Animal.jsx";
-import {RowsOfLeaves} from "./LeafRows.jsx";
+import RowsOfLeaves,{ animateLeaves} from "./LeafRows.jsx";
 
 function App() {
 
     const [showAnimal, setShowAnimal] = useState(false);
     const [currentAnimal, setCurrentAnimal] = useState(null);
+    const [disablePeekABoo, setDisablePeekABoo] = useState(false);
+    const [disableReset, setDisableReset] = useState(true);
     const handlePeekABoo = () => {
         setCurrentAnimal(previousAnimal => getRandomAnimal(previousAnimal));
         setShowAnimal(true);
+        animateLeaves('peek');
+        setDisablePeekABoo(true);
+        setDisableReset(false);
     };
 
     const handleReset = () => {
         setShowAnimal(false);
+        animateLeaves('reset');
+        setDisablePeekABoo(false);
+        setDisableReset(true);
     }
 
     return (
@@ -37,9 +45,9 @@ function App() {
             <RowsOfLeaves/>
             
             <div className={"pt-1 flex-container button-container"}>
-                <button className={"peek-a-boo-button p-1"} onClick={handlePeekABoo}>Peek-A-Boo!</button>
-                <button className={"reset-button"}>
-                    <img src={resetIcon} alt="Reset Icon" className={"reset-icon"} onClick={handleReset}/>
+                <button className={"peek-a-boo-button p-1"} onClick={handlePeekABoo} disabled={disablePeekABoo}>Peek-A-Boo!</button>
+                <button className={"reset-button"} disabled={disableReset} onClick={handleReset}>
+                    <img src={resetIcon} alt="Reset Icon" className={"reset-icon"}/>
                 </button>
             </div>
         </>

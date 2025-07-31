@@ -11,7 +11,9 @@ import zebra from './assets/animals/zebra.png';
 export const animalImages = [tiger, elephant, giraffe, lion, panda, monkey, zebra];
 
 export function getRandomAnimal(currentAnimal) {
-    return tryFilterOutArrayItem(animalImages, currentAnimal)[getRandomInt(animalImages.length)];
+    const filtered = tryFilterOutArrayItem(animalImages, currentAnimal);
+    const safeList = filtered.length > 0 ? filtered : animalImages;
+    return safeList[getRandomInt(safeList.length)];
 }
 export function Animal({animalImage}) {
     return (
