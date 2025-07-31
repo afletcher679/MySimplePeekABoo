@@ -6,7 +6,7 @@ import leaf3 from './assets/leaves/leaf-3.png';
 import leaf4 from './assets/leaves/leaf-4.png';
 import tropical1 from './assets/leaves/tropical-1.png';
 import tropical2 from './assets/leaves/tropical-2.png';
-import {useMemo} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 const leafImageUrls = [leaf1, leaf2, leaf3, leaf4, tropical1, tropical2];
 
@@ -80,7 +80,7 @@ export function RowsOfLeaves() {
         <div className={"leaf-container"}>
             {Array.from({ length: totalRows }).map((_, rowIndex) => (
                 <div key={rowIndex} id={`row-${rowIndex + 1}`} >
-                    <LeafRow topPixel={topStart + (spacing * rowIndex)} />
+                    <LeafRow className="leaf-row" topPixel={topStart + (spacing * rowIndex)} />
                 </div>
             ))}
         </div>

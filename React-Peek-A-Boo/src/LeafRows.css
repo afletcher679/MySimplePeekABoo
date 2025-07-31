@@ -1,11 +1,19 @@
 .leaf-container {
     width: 600px;
+    position: relative;
+    margin-top: -540px;
+}
+
+.leaf-row{
+    position: relative;
+    height: 120px;
+    width: 100%;
 }
 
 .leaf{
     position: absolute;
     width: 200px;
-    height:auto;
+    height: 215px;
 
     &.tilt {
         animation-name: tilt-shaking;

@@ -36,7 +36,7 @@ function App() {
             
             <RowsOfLeaves/>
             
-            <div className={"pt-1 flex-container"}>
+            <div className={"pt-1 flex-container button-container"}>
                 <button className={"peek-a-boo-button p-1"} onClick={handlePeekABoo}>Peek-A-Boo!</button>
                 <button className={"reset-button"}>
                     <img src={resetIcon} alt="Reset Icon" className={"reset-icon"} onClick={handleReset}/>
