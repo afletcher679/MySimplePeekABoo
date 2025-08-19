@@ -1,13 +1,13 @@
-import {getRandomInt} from "./commonUtils.js";
+import {getRandomInt} from "../commonUtils.js";
 import './LeafRows.css';
-import leaf1 from './assets/leaves/leaf-1.png';
-import leaf2 from './assets/leaves/leaf-2.png';
-import leaf3 from './assets/leaves/leaf-3.png';
-import leaf4 from './assets/leaves/leaf-4.png';
-import tropical1 from './assets/leaves/tropical-1.png';
-import tropical2 from './assets/leaves/tropical-2.png';
+import leaf1 from '../assets/leaves/leaf-1.png';
+import leaf2 from '../assets/leaves/leaf-2.png';
+import leaf3 from '../assets/leaves/leaf-3.png';
+import leaf4 from '../assets/leaves/leaf-4.png';
+import tropical1 from '../assets/leaves/tropical-1.png';
+import tropical2 from '../assets/leaves/tropical-2.png';
 import React, {useEffect, useMemo} from "react";
-import Leaf, {getRandomLeafClass} from "./Leaf.jsx";
+import Leaf, {getRandomLeafClass} from "../Leaf/Leaf.jsx";
 
 const leafImageUrls = [leaf1, leaf2, leaf3, leaf4, tropical1, tropical2];
 

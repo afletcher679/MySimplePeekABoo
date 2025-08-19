@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 import './Leaf.css'
-import {getRandomInt, tryFilterOutArrayItem} from "./commonUtils.js";
+import {getRandomInt, tryFilterOutArrayItem} from "../commonUtils.js";
 
 export function getRandomLeafClass(previousLeafClass) {
     const leafClasses = ['leaf', 'leaf tilt', 'leaf jump'];
