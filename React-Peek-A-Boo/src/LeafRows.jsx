@@ -6,7 +6,7 @@ import leaf3 from './assets/leaves/leaf-3.png';
 import leaf4 from './assets/leaves/leaf-4.png';
 import tropical1 from './assets/leaves/tropical-1.png';
 import tropical2 from './assets/leaves/tropical-2.png';
-import React, {forwardRef, useEffect, useMemo, useState} from "react";
+import React, {forwardRef, useEffect, useMemo} from "react";
 
 const leafImageUrls = [leaf1, leaf2, leaf3, leaf4, tropical1, tropical2];
 
@@ -15,7 +15,7 @@ function shuffleImages() {
     for (let imageNumber = imageArray.length - 1; imageNumber > 0; imageNumber--) {
         const randomImageNumber = getRandomInt(imageNumber + 1);
         [imageArray[imageNumber], imageArray[randomImageNumber]] =
-            [imageArray[randomImageNumber], imageArray[imageNumber]]; //swap elements
+            [imageArray[randomImageNumber], imageArray[imageNumber]]; // swap elements
     }
     return imageArray;
 }
@@ -78,16 +78,21 @@ function LeafRow({topPixel, leafRefs}) {
 
 const animations = {
     peek: [
-        {index: 1, transform: 'translateX(-100px)'}, //shift left
-        {row: 2, index: 2, transform: 'translateY(-120px)'}, //shift up for row 2
-        {row: 3, index: 2, transform: 'translateY(120px)'}, //shift down for row 3
-        {index: 3, transform: 'translateX(100px)'} //shift right
+        {rowIndex: 1, leafIndex: 1, transform: 'translateX(-100px)'}, // shift left
+        {rowIndex: 1, leafIndex: 2, transform: 'translateY(-120px)'}, // shift up for row 2
+        {rowIndex: 1, leafIndex: 3, transform: 'translateX(100px)'}, // shift right
+        {rowIndex: 2, leafIndex: 1, transform: 'translateX(-100px)'}, // shift left
+        {rowIndex: 2, leafIndex: 2, transform: 'translateY(120px)'}, // shift down for row 3
+        {rowIndex: 2, leafIndex: 3, transform: 'translateX(100px)'} // shift right
+        
     ],
     reset: [
-        {index: 1, transform: 'translateX(45px)'}, // shift right
-        {row: 2, index: 2, transform: 'translateY(60px)'}, // shift down for row 2
-        {row: 3, index: 2, transform: 'translateY(-60px)'}, // shift up for row 3
-        {index: 3, transform: 'translateX(-45px)'} //right
+        {rowIndex: 1, leafIndex: 1, transform: 'translateX(45px)'}, // shift right
+        {rowIndex: 1, leafIndex: 2, transform: 'translateY(60px)'}, // shift down for row 2
+        {rowIndex: 1, leafIndex: 3, transform: 'translateX(-45px)'}, // shift left
+        {rowIndex: 2, leafIndex: 1, transform: 'translateX(45px)'}, // shift right
+        {rowIndex: 2, leafIndex: 2, transform: 'translateY(-60px)'}, // shift up for row 3
+        {rowIndex: 2, leafIndex: 3, transform: 'translateX(-45px)'} // shift left
     ]
 };
 
@@ -102,15 +107,15 @@ function RowsOfLeaves({action}) {
             Array.from({ length: leavesPerRow }, () => React.createRef())
         ), []
     );
+    
     useEffect(() => {
         if (!action || !animations[action]) return;
 
         animations[action].forEach(anim => {
-            const rowIndex = (anim.row ?? 0); // 0-based, default to all rows
-            const targetRows = anim.row !== undefined ? [anim.row - 1] : [0, 1, 2, 3];
+            const targetRows = [anim.rowIndex];
 
             targetRows.forEach(r => {
-                const ref = rowRefs[r]?.[anim.index];
+                const ref = rowRefs[r]?.[anim.leafIndex];
                 if (ref?.current) {
                     ref.current.animate(
                         [{ transform: anim.transform }],
@@ -133,45 +138,6 @@ function RowsOfLeaves({action}) {
             ))}
         </div>
     );
-}
-
-export function animateLeaves(action) {
-    // Target only row 2 and 3
-    const leafRows = [document.getElementById('row-2'), document.getElementById('row-3')];
-
-    // Define transforms for 'peek' and 'reset' actions
-    const animations = {
-        peek: [
-            {index: 1, transform: 'translateX(-100px)'}, //shift left
-            {row: 2, index: 2, transform: 'translateY(-120px)'}, //shift up for row 2
-            {row: 3, index: 2, transform: 'translateY(120px)'}, //shift down for row 3
-            {index: 3, transform: 'translateX(100px)'} //shift right
-        ],
-        reset: [
-            {index: 1, transform: 'translateX(45px)'}, // shift right
-            {row: 2, index: 2, transform: 'translateY(60px)'}, // shift down for row 2
-            {row: 3, index: 2, transform: 'translateY(-60px)'}, // shift up for row 3
-            {index: 3, transform: 'translateX(-45px)'} //right
-        ]
-    };
-
-    // Apply animation to matching leaf images
-    leafRows.forEach(row => {
-        // For each image in the current row
-        row.querySelectorAll('img').forEach((img, index) => {
-            // Find the animation config for this image and row
-            const animation = animations[action].find(a =>
-                a.index === index && (a.row === undefined || a.row === parseInt(row.id.split('-')[1]))
-            );
-            // If an animation is defined for this image, apply it
-            if (animation) {
-                img.animate(
-                    [{transform: animation.transform}],
-                    {duration: 500, fill: 'forwards'}
-                );
-            }
-        });
-    });
 }
 
 export default RowsOfLeaves

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import resetIcon from './assets/reset.png';
 import leafCluster from './assets/leaves/monstera_leaves_cluster.png';
 import {Animal, getRandomAnimal} from "./Animal.jsx";
-import RowsOfLeaves,{ animateLeaves} from "./LeafRows.jsx";
+import RowsOfLeaves from "./LeafRows.jsx";
 
 function App() {
 
