@@ -5,43 +5,7 @@
     height: 90%;
 }
 
-.leaf-row{
+.leaf-row {
     height: 120px;
     width: 100%;
-}
-
-.leaf{
-    position: absolute;
-    width: 200px;
-    height: 215px;
-
-    &.tilt {
-        animation-name: tilt-shaking;
-        animation-duration: 10.5s;
-        animation-iteration-count: infinite;
-    }
-
-    &.jump {
-        animation-name: jump-shake;
-        animation-duration: 5s;
-        animation-iteration-count: infinite;
-    }
-}
-
-@keyframes jump-shake {
-    0% { transform: translateX(0) rotate(0)}
-    35% { transform: translateY(0) rotate(0)}
-    85% { transform: translateY(0) rotate(0) }
-    89% { transform: translateY(-2px) rotate(-17deg) }
-    93% { transform: translateY(-3px) rotate(17deg) }
-    98% { transform: translateY(-4px) rotate(-17deg) }
-    100% { transform: translateY(0) rotate(0) }
-}
-
-@keyframes tilt-shaking {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
 }

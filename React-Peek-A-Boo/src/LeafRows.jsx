@@ -1,4 +1,4 @@
-import {tryFilterOutArrayItem, getRandomInt} from "./commonUtils.js";
+import {getRandomInt} from "./commonUtils.js";
 import './LeafRows.css';
 import leaf1 from './assets/leaves/leaf-1.png';
 import leaf2 from './assets/leaves/leaf-2.png';
@@ -6,12 +6,13 @@ import leaf3 from './assets/leaves/leaf-3.png';
 import leaf4 from './assets/leaves/leaf-4.png';
 import tropical1 from './assets/leaves/tropical-1.png';
 import tropical2 from './assets/leaves/tropical-2.png';
-import React, {forwardRef, useEffect, useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
+import Leaf, {getRandomLeafClass} from "./Leaf.jsx";
 
 const leafImageUrls = [leaf1, leaf2, leaf3, leaf4, tropical1, tropical2];
 
 function shuffleImages() {
-    const imageArray = leafImageUrls.slice(0, 5); 
+    const imageArray = leafImageUrls.slice(0, 5);
     for (let imageNumber = imageArray.length - 1; imageNumber > 0; imageNumber--) {
         const randomImageNumber = getRandomInt(imageNumber + 1);
         [imageArray[imageNumber], imageArray[randomImageNumber]] =
@@ -19,23 +20,6 @@ function shuffleImages() {
     }
     return imageArray;
 }
-
-function getRandomLeafClass(previousLeafClass) {
-    const leafClasses = ['leaf', 'leaf tilt', 'leaf jump'];
-    const filtered = tryFilterOutArrayItem(leafClasses, previousLeafClass);
-    const safeList = filtered.length > 0 ? filtered : leafClasses;
-    return safeList[getRandomInt(safeList.length)];
-}
-
-const Leaf = forwardRef(({ imageUrl, altName, leafClass, topPixel, leftPixel }, ref) => (
-    <img
-        ref={ref}
-        src={imageUrl}
-        alt={altName}
-        className={leafClass}
-        style={{ top: topPixel, left: leftPixel}}
-    />
-));
 
 function LeafRow({topPixel, leafRefs}) {
     const leaves = useMemo(() => {
@@ -84,7 +68,7 @@ const animations = {
         {rowIndex: 2, leafIndex: 1, transform: 'translateX(-100px)'}, // shift left
         {rowIndex: 2, leafIndex: 2, transform: 'translateY(120px)'}, // shift down for row 3
         {rowIndex: 2, leafIndex: 3, transform: 'translateX(100px)'} // shift right
-        
+
     ],
     reset: [
         {rowIndex: 1, leafIndex: 1, transform: 'translateX(45px)'}, // shift right
@@ -103,11 +87,11 @@ function RowsOfLeaves({action}) {
     const topStart = -15;
     // Create refs: 2D array, one array per row
     const rowRefs = useMemo(() =>
-        Array.from({ length: totalRows }, () =>
-            Array.from({ length: leavesPerRow }, () => React.createRef())
+        Array.from({length: totalRows}, () =>
+            Array.from({length: leavesPerRow}, () => React.createRef())
         ), []
     );
-    
+
     useEffect(() => {
         if (!action || !animations[action]) return;
 
@@ -118,8 +102,8 @@ function RowsOfLeaves({action}) {
                 const ref = rowRefs[r]?.[anim.leafIndex];
                 if (ref?.current) {
                     ref.current.animate(
-                        [{ transform: anim.transform }],
-                        { duration: 500, fill: 'forwards' }
+                        [{transform: anim.transform}],
+                        {duration: 500, fill: 'forwards'}
                     );
                 }
             });
