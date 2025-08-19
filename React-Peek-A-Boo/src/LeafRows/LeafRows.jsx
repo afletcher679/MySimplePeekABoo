@@ -37,7 +37,7 @@ function LeafRow({topPixel, leafRefs}) {
                 left: leafLeftPixel,
             });
 
-            leafLeftPixel += 120;
+            leafLeftPixel += 110;
         }
 
         return rowLeaves;
