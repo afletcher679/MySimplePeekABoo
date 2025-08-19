@@ -55,8 +55,3 @@
         rotate: -90deg;
     }
 }
-
-.button-container {
-    position: relative;
-    margin-top: 540px; /* Adjusted to fit the layout */
-}

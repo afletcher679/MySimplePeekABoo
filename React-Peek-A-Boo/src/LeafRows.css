@@ -2,10 +2,10 @@
     width: 600px;
     position: relative;
     margin-top: -540px;
+    height: 90%;
 }
 
 .leaf-row{
-    position: relative;
     height: 120px;
     width: 100%;
 }

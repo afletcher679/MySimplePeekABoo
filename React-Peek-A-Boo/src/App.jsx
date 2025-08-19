@@ -13,17 +13,18 @@ function App() {
     const [currentAnimal, setCurrentAnimal] = useState(null);
     const [disablePeekABoo, setDisablePeekABoo] = useState(false);
     const [disableReset, setDisableReset] = useState(true);
+    const [leafAction, setLeafAction] = useState(null);
     const handlePeekABoo = () => {
         setCurrentAnimal(previousAnimal => getRandomAnimal(previousAnimal));
         setShowAnimal(true);
-        animateLeaves('peek');
+        setLeafAction('peek');
         setDisablePeekABoo(true);
         setDisableReset(false);
     };
 
     const handleReset = () => {
         setShowAnimal(false);
-        animateLeaves('reset');
+        setLeafAction('reset');
         setDisablePeekABoo(false);
         setDisableReset(true);
     }
@@ -42,9 +43,9 @@ function App() {
 
             {showAnimal && <Animal animalImage={currentAnimal}/>}
             
-            <RowsOfLeaves/>
+            <RowsOfLeaves action={leafAction}/>
             
-            <div className={"pt-1 flex-container button-container"}>
+            <div className={"pt-1 flex-container"}>
                 <button className={"peek-a-boo-button p-1"} onClick={handlePeekABoo} disabled={disablePeekABoo}>Peek-A-Boo!</button>
                 <button className={"reset-button"} disabled={disableReset} onClick={handleReset}>
                     <img src={resetIcon} alt="Reset Icon" className={"reset-icon"}/>
